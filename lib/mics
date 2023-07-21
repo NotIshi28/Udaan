@@ -1,0 +1,927 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
+
+Future<String> loadAsset() async {
+  return await rootBundle.loadString('assets/config.json');
+}
+
+void main() {
+  runApp(const HomeScreen());
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key ? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+  PageController pageController = PageController();
+
+  void onTapped(int index){
+    setState(() {
+      _selectedIndex = index;
+    });
+    pageController.jumpToPage(index);
+  }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text('UDAAN'),
+          centerTitle: true,
+          foregroundColor: Colors.black,
+          
+          actions: <Widget> [
+            IconButton(onPressed: () {}, icon: const Icon (Icons.notifications)),
+
+          ],
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(2),
+              bottomRight: Radius.circular(2)
+            )
+          ),
+          ),
+        body: const Center( 
+        
+        child: SingleChildScrollView(
+          controller: pageController,
+          child: Column(
+            children: [
+
+        Align(alignment: Alignment.topCenter,
+        child:Padding(padding: EdgeInsetsDirectional.only(top: 40),    
+        child: Card(
+          elevation: 50,
+          color: Color(0xFF1FBF75),
+          child: SizedBox(
+            width: 400,
+            height: 200,
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ), //SizedBox
+                  Text(
+                    'Hello !',
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Futura Md BT',
+                    ), //Textstyle
+                  ), //Text
+                  Text(
+                    'What do you want to learn today ?',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Futura Md BT',
+                    ), //Textstyle
+                  ), //Text
+                  SizedBox(
+                    height: 10,
+                  ), //SizedBox
+                  SizedBox(
+                    width: 270,
+                    child: TextField(
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          hintText: 'Example : Pottery',
+                        ),
+                      ),
+                  ),
+                  
+                  SizedBox(
+                    height: 10,
+                  ), //SizedBox
+                  ],
+              
+              ), //Column
+              
+            ), //Padding
+          
+          ),
+        ),
+
+        
+
+        ),
+        ),
+        
+        Align(alignment: Alignment.topCenter,
+          child:Padding(
+            padding: EdgeInsetsDirectional.only(top: 10),    
+            child: Row(
+          children: [
+            Align(alignment: Alignment.topCenter,
+              child:Padding(
+                padding: EdgeInsetsDirectional.only(top: 10),    
+                child: Card(
+              elevation: 50,
+              shadowColor: Colors.black,
+              color: Color(0xFF33A9FF),
+              child: SizedBox(
+                width: 400,
+                height: 60,
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ), //SizedBox
+                    
+                    Text(
+                        'Explore Library !',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ), //Textstyle
+                      ), 
+                      Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(padding: EdgeInsets.only(left: 210), child: Icon(Icons.arrow_right_alt_rounded, color: Colors.white,),)
+                    ),
+                      ],
+                  ), 
+                  
+                ), //Padding
+              
+              ),
+            ),
+
+            ),),
+          ],
+        ),
+
+        ),),
+
+      Align(alignment: Alignment.topLeft,
+          child:Padding(
+            padding: EdgeInsetsDirectional.all(20),
+            child:Text(
+    'Explore Categories',
+    style: TextStyle(
+        color: Color(0xFF5C5C5C),
+        fontSize: 22,
+        fontFamily: 'Futura Md BT',
+        fontWeight: FontWeight.w400,
+    ),
+)
+
+          ),),
+
+      Align(alignment: Alignment.topLeft,
+          child:Padding(
+            padding: EdgeInsetsDirectional.all(20),
+            child:Row(
+              children: [
+                Row(
+                  children: <Widget>[
+
+                    SizedBox(
+                      width: 174,
+                      height: 115,
+                      child: Stack(
+                          children: [
+                            Image(
+                              image:
+                                AssetImage('assets/images/weaving.png'),
+                            ),
+                            Positioned(
+                              left: 103,
+                              top: 7,
+                              child: Text(
+                                  'Weaving',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Futura Md BT',
+                                      fontWeight: FontWeight.w400,
+                                  ),
+                              ),
+                            ),
+            
+        
+        ],
+
+    ),
+),
+
+                 Padding(
+                  padding: EdgeInsets.only(left: 20),
+                   child: 
+                     SizedBox(
+                          width: 174,
+                          height: 115,
+                          child: Stack(
+                              children: [
+                                Image(
+                                  image:
+                                    AssetImage('assets/images/handicrafts.png'),
+                                ),
+                                Positioned(
+                                  left: 85,
+                                  top: 7,
+                                  child: Text(
+                                      'Handicrafts',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: 'Futura Md BT',
+                                          fontWeight: FontWeight.w400,
+                                      ),
+                                  ),
+                                ),
+            
+        
+        ],
+
+    ),
+),
+                   
+                 ),
+                  ],
+                  
+                )
+              ],
+            
+            )
+
+          ),),
+          Align(alignment: Alignment.topLeft,
+          child:Padding(
+            padding: EdgeInsetsDirectional.all(20),
+            child:Row(
+              children: [
+                Row(
+                  children: <Widget>[
+
+                    SizedBox(
+                      width: 174,
+                      height: 115,
+                      child: Stack(
+                          children: [
+                            Image(
+                              image:
+                                AssetImage('assets/images/Farming.png'),
+                            ),
+                            Positioned(
+                              left: 103,
+                              top: 7,
+                              child: Text(
+                                  'Farming',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontFamily: 'Futura Md BT',
+                                      fontWeight: FontWeight.w400,
+                                  ),
+                              ),
+                            ),
+            
+        
+        ],
+
+    ),
+),
+
+                 Padding(
+                  padding: EdgeInsets.only(left: 20),
+                   child: 
+                     SizedBox(
+                          width: 174,
+                          height: 115,
+                          child: Stack(
+                              children: [
+                                Image(
+                                  image:
+                                    AssetImage('assets/images/language.png'),
+                                ),
+                                Positioned(
+                                  left: 85,
+                                  top: 7,
+                                  child: Text(
+                                      'Language',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontFamily: 'Futura Md BT',
+                                          fontWeight: FontWeight.w400,
+                                      ),
+                                  ),
+                                ),
+            
+        
+        ],
+
+    ),
+),
+                   
+                 ),
+                  ],
+                  
+                )
+              ],
+            
+            )
+
+          ),),
+          Align(alignment: Alignment.topLeft,
+          child:Padding(
+            padding: EdgeInsetsDirectional.all(20),
+            child:Text(
+    'Featured Courses',
+    style: TextStyle(
+        color: Color(0xFF5C5C5C),
+        fontSize: 22,
+        fontFamily: 'Futura Md BT',
+        fontWeight: FontWeight.w400,
+    ),
+)
+
+          ),),
+
+      Align(alignment: Alignment.topLeft,
+          child:Padding(
+            padding: EdgeInsetsDirectional.all(20),
+            child:Row(
+              children: [
+                Row(
+                  children: <Widget>[
+
+                    SizedBox(
+                      width: 147,
+                      height: 97,
+                      child: Stack(
+                          children: [
+                            Image(
+                              image:
+                                AssetImage('assets/images/water.png'),
+                            ),
+        ],
+
+    ),
+),
+
+                 Padding(
+                  padding: EdgeInsets.only(left: 14),
+                   child: 
+                     SizedBox(
+                          width: 147,
+                          height: 97,
+                          child: Stack(
+                              children: [
+                                Image(
+                                  image:
+                                    AssetImage('assets/images/mech.png'),
+                                ),
+                                
+            
+        
+        ],
+
+    ),
+),
+                   
+                 ),
+                 Padding(
+                  padding: EdgeInsets.only(left: 14),
+                   child: 
+                     SizedBox(
+                          width: 50,
+                          height: 97,
+                          child: Stack(
+                              children: [
+                                Image(
+                                  image:
+                                    AssetImage('assets/images/blur.png'),
+                                ),
+                                
+            
+        
+        ],
+
+    ),
+),
+                   
+                 ),
+                  ],
+                  
+                )
+              ],
+            
+            )
+
+          ),),
+        ],
+        
+        ),
+            
+        
+          
+          ),
+        
+          
+          
+        
+       
+      ),
+      drawer: const Drawer(
+          child: Text(''),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: const Color(0xFF4D4D4D),
+          unselectedItemColor: Colors.blueGrey,
+          items: const[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label:'Home',
+              backgroundColor: Color(0xFFB4DFFF)
+              ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.equalizer),
+              label:'Stats'
+              ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label:'Cart'
+              ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label:'Profile'
+              ),
+
+          ],
+          currentIndex: _selectedIndex,
+          onTap: onTapped,
+
+        ),),
+        
+    );
+  
+  }
+}
+
+
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+class Profile extends StatefulWidget {
+  const Profile({super.key});
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(backgroundColor: Colors.white,
+          title: const Text('UDAAN'),
+          centerTitle: true,
+          foregroundColor: Colors.white,),
+        body: Container(
+    width: 430,
+    height: 932,
+    clipBehavior: Clip.antiAlias,
+    decoration: ShapeDecoration(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+        ),
+    ),
+    child: Stack(
+        children: [
+            const Positioned(
+                left: 36,
+                top: 869,
+                child: Text(
+                    'On Discount',
+                    style: TextStyle(
+                        color: Color(0xFF5C5C5C),
+                        fontSize: 22,
+                        fontFamily: 'Futura Md BT',
+                        fontWeight: FontWeight.w400,
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 165,
+                top: 29,
+                child: Text(
+                    'PROFILE',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.black.withOpacity(0.6499999761581421),
+                        fontSize: 26.56,
+                        fontFamily: 'Futura Md BT',
+                        fontWeight: FontWeight.w400,
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 0,
+                top: 851,
+                child: Container(
+                    width: 430,
+                    height: 81,
+                    decoration: const BoxDecoration(
+                        color: Color(0xFFF4F4F4),
+                        boxShadow: [
+                            BoxShadow(
+                                color: Color(0x26000000),
+                                blurRadius: 17,
+                                offset: Offset(0, -5),
+                                spreadRadius: 0,
+                            )
+                        ],
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 47,
+                top: 873,
+                child: Container(
+                    width: 336.64,
+                    height: 36.64,
+                    child: Stack(
+                        children: [
+                            Positioned(
+                                left: 0,
+                                top: 2,
+                                child: Container(
+                                    width: 32,
+                                    height: 32,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(),
+                                    child: const Stack(children: [
+                                    
+                                    ]),
+                                ),
+                            ),
+                            Positioned(
+                                left: 96,
+                                top: 3,
+                                child: Container(
+                                    width: 32,
+                                    height: 32,
+                                    clipBehavior: Clip.antiAlias,
+                                    decoration: const BoxDecoration(),
+                                    child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                            Container(
+                                                width: 32,
+                                                height: 32,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: const BoxDecoration(),
+                                                child: const Column(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                    
+                                                    ],
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                            Positioned(
+                                left: 300,
+                                top: 0,
+                                child: Container(
+                                    width: 36.64,
+                                    height: 36.64,
+                                    child: Stack(
+                                        children: [
+                                            Positioned(
+                                                left: 7.63,
+                                                top: 4.58,
+                                                child: Container(
+                                                    width: 21.37,
+                                                    height: 27.48,
+                                                    child: const Stack(children: [
+                                                    
+                                                    ]),
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                            Positioned(
+                                left: 196,
+                                top: 1,
+                                child: Container(
+                                    width: 35.46,
+                                    height: 35.46,
+                                    child: Stack(
+                                        children: [
+                                            Positioned(
+                                                left: 2.96,
+                                                top: 4.43,
+                                                child: Container(
+                                                    width: 28.61,
+                                                    height: 26.60,
+                                                    child: const Stack(children: [
+                                                    
+                                                    ]),
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                        ],
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 31,
+                top: 89,
+                child: Container(
+                    width: 364,
+                    height: 112,
+                    child: Stack(
+                        children: [
+                            Positioned(
+                                left: 0,
+                                top: 0,
+                                child: Container(
+                                    width: 364,
+                                    height: 112,
+                                    decoration: const ShapeDecoration(
+                                        gradient: LinearGradient(
+                                            begin: Alignment(0.99, -0.12),
+                                            end: Alignment(-0.99, 0.12),
+                                            colors: [Color(0xFF00FF87), Color(0xFF60EFFF)],
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight: Radius.circular(10),
+                                            ),
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            Positioned(
+                                left: 0,
+                                top: 0,
+                                child: Container(
+                                    width: 364,
+                                    height: 120,
+                                    child: const Image(image: AssetImage('assets/images/tex.png')),
+                                ),
+                            ),
+                        ],
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 104,
+                top: 132,
+                child: Container(
+                    height: 165.17,
+                    child: const Stack(
+                        children: [
+                            Positioned(
+                                left: 0,
+                                top: 98,
+                                child: SizedBox(
+                                    width: 220,
+                                    height: 67.17,
+                                    child: Stack(
+                                        children: [
+                                            Positioned(
+                                                left: 0,
+                                                top: 0,
+                                                child: Text(
+                                                    'Hello Vatsal!',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Color(0xFF5C5C5C),
+                                                        fontSize: 38.02,
+                                                        fontFamily: 'Futura Md BT',
+                                                        fontWeight: FontWeight.w400,
+                                                    ),
+                                                ),
+                                            ),
+                                            Positioned(
+                                                left: 20,
+                                                top: 40.17,
+                                                child: Text(
+                                                    '+919599933765',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Color(0xFF777777),
+                                                        fontSize: 10,
+                                                        fontFamily: 'Futura Md BT',
+                                                        fontWeight: FontWeight.w400,
+                                                    ),
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                            Positioned(
+                                left: 0,
+                                top: 20,
+                                child: SizedBox(
+                                    width: 88,
+                                    height: 88,
+                                    child: Image(image: AssetImage('assets/images/img.png')),
+                                ),
+                            ),
+                        ],
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 74,
+                top: 317,
+                child: Container(
+                    width: 281.62,
+                    height: 45.74,
+                    child: Stack(
+                        children: [
+                            Positioned(
+                                left: 0,
+                                top: 0,
+                                child: Container(
+                                    width: 130.81,
+                                    height: 45.74,
+                                    child: Stack(
+                                        children: [
+                                            Positioned(
+                                                left: 0,
+                                                top: 0,
+                                                child: Container(
+                                                    width: 130.81,
+                                                    height: 45.74,
+                                                    decoration: ShapeDecoration(
+                                                        color: const Color(0xFF1FBF75),
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(9.15),
+                                                        ),
+                                                    ),
+                                                ),
+                                            ),
+                                            const Positioned(
+                                                left: 26.50,
+                                                top: 13.26,
+                                                child: Text(
+                                                    'Languages',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 15.89,
+                                                        fontFamily: 'Futura Md BT',
+                                                        fontWeight: FontWeight.w400,
+                                                    ),
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                            Positioned(
+                                left: 150.81,
+                                top: 0,
+                                child: Container(
+                                    width: 130.81,
+                                    height: 45.74,
+                                    child: Stack(
+                                        children: [
+                                            Positioned(
+                                                left: 0,
+                                                top: 0,
+                                                child: Container(
+                                                    width: 130.81,
+                                                    height: 45.74,
+                                                    decoration: ShapeDecoration(
+                                                        color: const Color(0xFF33A9FF),
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(9.15),
+                                                        ),
+                                                    ),
+                                                ),
+                                            ),
+                                            const Positioned(
+                                                left: 26.53,
+                                                top: 13.26,
+                                                child: Text(
+                                                    'Edit Profile',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 15.89,
+                                                        fontFamily: 'Futura Md BT',
+                                                        fontWeight: FontWeight.w400,
+                                                    ),
+                                                ),
+                                            ),
+                                        ],
+                                    ),
+                                ),
+                            ),
+                        ],
+                    ),
+                ),
+            ),
+            Positioned(
+                left: 58,
+                top: 439,
+                child: Container(
+                    width: 314,
+                    height: 187,
+                    child: const Image(image: AssetImage('assets/images/eng.png')),
+                ),
+            ),
+            Positioned(
+                left: 58,
+                top: 645,
+                child: Container(
+                    width: 314,
+                    height: 187,
+                    child: const Image(image: AssetImage('assets/images/farm.png')),
+                ),
+            ),
+            const Positioned(
+                left: 61,
+                top: 403,
+                child: SizedBox(
+                    width: 282,
+                    height: 47,
+                    child: Text(
+                        'Recent Courses',
+                        style: TextStyle(
+                            color: Color(0xFF777777),
+                            fontSize: 20,
+                            fontFamily: 'Futura Md BT',
+                            fontWeight: FontWeight.w400,
+                        ),
+                    ),
+                ),
+            ),
+            const Positioned(
+                left: 70,
+                top: 599,
+                child: Text(
+                    'English Language',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'Futura Md BT',
+                        fontWeight: FontWeight.w400,
+                    ),
+                ),
+            ),
+            const Positioned(
+                left: 70,
+                top: 805,
+                child: Text(
+                    'Seasonal Farming',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontFamily: 'Futura Md BT',
+                        fontWeight: FontWeight.w400,
+                    ),
+                ),
+            ),
+        ],
+    ),
+)
+      ),
+    );
+  }
+}
